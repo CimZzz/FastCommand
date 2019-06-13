@@ -1,4 +1,5 @@
 package com.virtualightning.winform.actions
 
-object EscAction {
-}
+import com.virtualightning.base.ui.BaseWindowAction
+
+object EscAction: BaseWindowAction()

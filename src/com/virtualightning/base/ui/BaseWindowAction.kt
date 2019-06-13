@@ -1,4 +1,5 @@
 package com.virtualightning.base.ui
 
-class BaseWindowAction {
-}
+import com.virtualightning.base.generics.BaseAction
+
+abstract class BaseWindowAction: BaseAction()

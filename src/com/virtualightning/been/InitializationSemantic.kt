@@ -76,11 +76,14 @@ class InitializationSemantic: BaseSemantic() {
 
                             markEnd {
                                 catchRun {
-                                    val writer = PrintWriter(FileOutputStream(File(file, "config.properties")))
+                                    val configFile = File(file, "config.properties")
+                                    val writer = PrintWriter(FileOutputStream(configFile))
                                     CoreConstants.writeDefaultConfig(writer)
                                     writer.flush()
                                     writer.close()
                                     CoreApp.reportMessage("在 ${file.absolutePath} 下成功生成缺省配置文件 config.properties")
+                                    CoreApp.reportMessage("可以通过调用 -config ${configFile.absolutePath} 来指定配置文件")
+                                    CoreApp.reportMessage("也可将配置文件放置在运行程序同一级下")
                                 }
                             }
                         }

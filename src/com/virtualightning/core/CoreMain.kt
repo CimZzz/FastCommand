@@ -1,6 +1,8 @@
 package com.virtualightning.core
 
 import com.virtualightning.been.InitializationSemantic
+import com.virtualightning.tools.MessageLooper
+import com.virtualightning.winform.MainFrame
 
 object CoreMain {
 
@@ -32,5 +34,6 @@ object CoreMain {
 
     fun startFrame() {
         CoreApp.reportMessage("启动窗口应用程序")
+        MainFrame()
     }
 }
