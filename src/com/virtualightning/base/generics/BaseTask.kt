@@ -1,15 +1,17 @@
 package com.virtualightning.base.generics
 
+import com.virtualightning.interfaces.Run
 import com.virtualightning.tools.RefHandler
 
-class BaseTask<T, E>(
-    val runnable: (BaseTask<T, E>) -> T?,
-    val handler: RefHandler<T, E>
-): Runnable {
+abstract class BaseTask<E>(
+    val runnable: (BaseTask<E>) -> E?,
+    private val handler: RefHandler<E, *>? = null
+): Run {
     var isRunning = true
 
-    override fun run() {
+
+    override fun invoke() {
         val result = runnable(this) ?: return
-        handler.invoke(result)
+        handler?.invoke(result)
     }
 }

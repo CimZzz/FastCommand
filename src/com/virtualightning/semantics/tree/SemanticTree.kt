@@ -1,45 +1,115 @@
 package com.virtualightning.semantics.tree
 
+import com.virtualightning.actions.InitTreeAction
+import com.virtualightning.actions.InitTreeCompletedAction
+import com.virtualightning.actions.SemanticErrorAction
+import com.virtualightning.base.generics.BaseAction
 import com.virtualightning.base.generics.BaseTreeAction
 import com.virtualightning.core.CoreApp
-import com.virtualightning.semantics.tree.actions.InitTreeAction
+import com.virtualightning.core.CoreSemanticResolve
+import com.virtualightning.semantics.actions.*
+import com.virtualightning.semantics.tasks.InitTreeTask
 import com.virtualightning.tools.MessageLooper
 import com.virtualightning.tools.RefHandler
 
-object SemanticTree {
-    private var state = TreeState.default
-    private var messageLooper: MessageLooper<BaseTreeAction>? = null
+class SemanticTree {
+    private var state = TreeState.Default
+    private var messageLooper: MessageLooper<BaseAction>? = null
+    private var cmdLooper: MessageLooper<BaseAction>? = null
+
+    private var treeManager: TreeManager? = null
 
     fun initTree() {
-        val messageLooper = MessageLooper<BaseTreeAction>(RefHandler(this) {
+        val messageLooper = MessageLooper<BaseAction>(RefHandler(this) {
             tree, message ->
             tree.onReceiverMessage(message)
         })
         messageLooper.startAsync()
         this.messageLooper = messageLooper
 
-        sendAction(InitTreeAction(messageLooper))
+        sendAction(InnerInitTreeAction(messageLooper))
     }
 
     fun destroyTree() {
-        this.messageLooper?.destroy()
+        this.messageLooper?.sendAction(InnerDestroyTreeAction())
     }
 
-    private fun sendAction(action: BaseTreeAction) {
+    fun tryExecSemantic(messageLooper: MessageLooper<BaseAction>, execString: String) {
+        this.messageLooper?.sendAction(InnerSemanticExecAction(messageLooper, execString))
+    }
+
+    private fun sendAction(action: BaseAction) {
         this.messageLooper?.sendAction(action)
     }
 
-    private fun onReceiverMessage(action: BaseTreeAction) {
-        if(action is InitTreeAction) {
-            CoreApp.sendGlobalMessage(action)
+    private fun onReceiverMessage(action: BaseAction) {
+        if(state == TreeState.Destroy)
+            return
 
+        if(action is InnerDestroyTreeAction) {
+            this.messageLooper?.destroy()
+            this.treeManager?.destroy()
+            this.cmdLooper?.destroy()
+            this.state = TreeState.Destroy
+            return
         }
+
+        if(action is InnerInitTreeAction) {
+            CoreApp.sendGlobalMessage(InitTreeAction())
+            CoreApp.exec(InitTreeTask(messageLooper))
+            return
+        }
+
+        if(action is InnerInitTreeCompletedAction) {
+            this.treeManager = action.treeManager
+            this.state = TreeState.All
+            CoreApp.sendGlobalMessage(InitTreeCompletedAction())
+            return
+        }
+
+        if(state == TreeState.Default) {
+            sendSemanticError("语法树尚未初始化", action)
+            return
+        }
+
+        when(action) {
+            is InnerSemanticExecAction -> execSemantic(action)
+        }
+    }
+
+    private fun execSemantic(action: InnerSemanticExecAction) {
+        val resolveBean = CoreSemanticResolve.resolveExecStr(action.execStr)
+        if(resolveBean == null) {
+            sendSemanticError("未找到对应语法 code = 1 : ${action.execStr}", action)
+            return
+        }
+
+        val semantic = treeManager?.findSemanticBy(resolveBean.namespace, resolveBean.syntax)
+        if(semantic == null) {
+            sendSemanticError("未找到对应语法 code = 2 : ${action.execStr}", action)
+            return
+        }
+
+        val resultBean = CoreSemanticResolve.resolve(semantic, resolveBean.params)
+        if(!resultBean.isSuccess)
+            sendSemanticError(resultBean.msg?:"执行语法错误", action)
+    }
+
+    private fun sendSemanticError(errorText: String, fromAction: BaseAction) {
+        sendPrivateAction(SemanticErrorAction(errorText), fromAction)
+    }
+
+    private fun sendPrivateAction(action: BaseAction, fromAction: BaseAction) {
+        if(fromAction is BaseTreeAction)
+            fromAction.messageLooper.sendAction(action)
+        else CoreApp.sendGlobalMessage(action)
     }
 }
 
 private enum class TreeState {
-    default,
-    all,
-    readOnly,
-    locked
+    Default,
+    All,
+    CMD,
+    Locked,
+    Destroy
 }

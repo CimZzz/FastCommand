@@ -1,12 +1,15 @@
 package com.virtualightning.winform
 
+import com.virtualightning.actions.ClearAction
+import com.virtualightning.actions.InitTreeAction
+import com.virtualightning.actions.InitTreeCompletedAction
 import com.virtualightning.base.generics.BaseAction
+import com.virtualightning.base.generics.BaseErrorAction
 import com.virtualightning.base.ui.BaseWindow
-import com.virtualightning.base.ui.BaseWindowAction
 import com.virtualightning.core.CoreApp
 import com.virtualightning.interfaces.IGlobalMessageReceiver
 import com.virtualightning.interfaces.IReporter
-import com.virtualightning.semantics.tree.actions.InitTreeAction
+import com.virtualightning.semantics.actions.InnerInitTreeAction
 import com.virtualightning.tools.MessageLooper
 import com.virtualightning.tools.RefHandler
 import com.virtualightning.winform.actions.*
@@ -59,15 +62,12 @@ class MainFrame: BaseWindow() {
         })
         inputField.document.addDocumentListener(object: DocumentListener{
             override fun changedUpdate(e: DocumentEvent?) {
-                CoreApp.reportMessage("123")
             }
 
             override fun insertUpdate(e: DocumentEvent?) {
-                CoreApp.reportWarn("456")
             }
 
             override fun removeUpdate(e: DocumentEvent?) {
-                CoreApp.reportError("789")
             }
         })
 
@@ -100,12 +100,42 @@ class MainFrame: BaseWindow() {
     private fun onReceiverMessage(message: BaseAction) {
         when(message) {
             is InitTreeAction -> log(LogAction(Color.BLACK, "初始化语法树中，请稍后"))
+            is InitTreeCompletedAction -> log(LogAction(Color.GREEN, "初始化语法树完成"))
             is LogAction -> log(message)
+
+            /*operator message*/
+            is EnterAction -> execSemantic()
+
+            /*semantic message*/
+            is BaseErrorAction -> error(message)
+
+            /*global message*/
+            is ClearAction -> clear(message)
         }
     }
 
     private fun log(action: LogAction) {
         logArea.temp(action.logColor, action.message)
+    }
+
+    private fun error(action: BaseErrorAction) {
+        logArea.error(action.toString())
+    }
+
+    @Suppress("UNUSED_PARAMETER")
+    private fun clear(action: ClearAction) {
+        logArea.clear()
+    }
+
+    private fun execSemantic() {
+        val execStr = inputField.text
+        logArea.message("> $execStr")
+        resetInputUI()
+        CoreApp.execSemantic(this.messageLooper, execStr)
+    }
+
+    private fun resetInputUI() {
+        inputField.text = ""
     }
 }
 

@@ -1,10 +1,10 @@
 package com.virtualightning.core
 
-import com.sun.xml.internal.rngom.parse.host.Base
 import com.virtualightning.base.generics.BaseAction
 import com.virtualightning.defaults.DefaultReporter
 import com.virtualightning.interfaces.IGlobalMessageReceiver
 import com.virtualightning.interfaces.IReporter
+import com.virtualightning.interfaces.Run
 import com.virtualightning.semantics.tree.SemanticTree
 import com.virtualightning.tools.MessageLooper
 import com.virtualightning.tools.RefHandler
@@ -21,7 +21,8 @@ object CoreApp {
     fun initEnvironment() {
         messageLooper.startAsync()
         threadPool = Executors.newCachedThreadPool()
-        SemanticTree.initTree()
+        semanticTree = SemanticTree()
+        semanticTree?.initTree()
     }
 
     /**
@@ -30,7 +31,8 @@ object CoreApp {
     fun destroyEnvironment() {
         messageLooper.destroy()
         threadPool?.shutdown()
-        SemanticTree.destroyTree()
+        semanticTree?.destroyTree()
+        semanticTree = null
         reporter = DefaultReporter
         globalMessageReceiver = null
     }
@@ -58,7 +60,7 @@ object CoreApp {
     /*线程池*/
     private var threadPool: ExecutorService? = null
 
-    fun exec(runnable: () -> Unit) {
+    fun exec(runnable: Run) {
         threadPool?.execute(runnable)
     }
 
@@ -81,5 +83,12 @@ object CoreApp {
 
     private fun onReceiverMessage(action: BaseAction) {
         this.globalMessageReceiver?.onReceiverGlobalMessage(action)
+    }
+
+    /*语法树*/
+    private var semanticTree: SemanticTree? = null
+
+    fun execSemantic(messageLooper: MessageLooper<BaseAction>, execStr: String) {
+        semanticTree?.tryExecSemantic(messageLooper, execStr)
     }
 }

@@ -1,7 +1,6 @@
 package com.virtualightning.core
 
-import com.virtualightning.been.InitializationSemantic
-import com.virtualightning.tools.MessageLooper
+import com.virtualightning.semantics.semantics.InitializationSemantic
 import com.virtualightning.winform.MainFrame
 
 object CoreMain {

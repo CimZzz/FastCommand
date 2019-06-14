@@ -5,10 +5,11 @@ import com.virtualightning.base.semantics.BaseBoundedConfig
 import com.virtualightning.base.semantics.BaseConfig
 import com.virtualightning.base.semantics.BaseParameter
 import com.virtualightning.base.semantics.BaseSemantic
+import com.virtualightning.been.SemanticResolveBean
 import java.util.*
 
 object CoreSemanticResolve {
-    fun resolve(semantic: BaseSemantic, args: Array<String>): ResolveResultBean {
+    fun resolve(semantic: BaseSemantic, args: Array<String>?): ResolveResultBean {
         val baseRun = semantic.generateRun()
 
         var config: BaseConfig? = null
@@ -16,84 +17,82 @@ object CoreSemanticResolve {
         var configParameter: BaseParameter? = null
         var configParameterList: LinkedList<Any?>? = null
 
+        if(args != null) {
+            for (cmd in args) {
+                if (baseRun.isMarkEnd()) {
+                    baseRun.errorText = "${semantic.syntax} 多余的参数 $cmd"
+                    break
+                }
+                val lastConfig = config
+                val lastConfigParameter = configParameter
+                if (lastConfig != null) {
+                    if (lastConfigParameter != null) {
+                        val paramValue = lastConfigParameter.checkType(cmd)
 
-        for(cmd in args) {
-            if(baseRun.isMarkEnd()) {
-                baseRun.errorText = "${semantic.syntax} 多余的参数 $cmd"
-                break
-            }
-            val lastConfig = config
-            val lastConfigParameter = configParameter
-            if(lastConfig != null) {
-                if(lastConfigParameter != null) {
-                    val paramValue = lastConfigParameter.checkType(cmd)
-
-                    if(paramValue == null) {
-                        baseRun.errorText = "${lastConfig.syntax} 的参数类型不正确，错误参数: $cmd"
-                        break
-                    }
-
-                    if(configParameterList == null)
-                        configParameterList = LinkedList()
-
-                    configParameterList.add(paramValue)
-
-                    configParamIdx ++
-
-                    if(lastConfig.parameter!!.size <= configParamIdx) {
-                        //end
-                        baseRun.setConfig(lastConfig.syntax, *configParameterList.toArray())
-                        config = null
-                        configParameter = null
-                        configParameterList.clear()
-                        configParameterList = null
-
-                        if(baseRun.errorText != null)
+                        if (paramValue == null) {
+                            baseRun.errorText = "${lastConfig.syntax} 的参数类型不正确，错误参数: $cmd"
                             break
-                    }
-                    else configParameter = lastConfig.parameter!![configParamIdx]
-
-                    continue
-                }
-            }
-
-            val configArr = semantic.configs
-            if(configArr != null) {
-                var isFound = false
-                for(conf in configArr) {
-                    if(conf.syntax == cmd) {
-                        if(conf.parameter != null && conf.parameter!!.isNotEmpty()) {
-                            config = conf
-                            configParamIdx = 0
-                            configParameter = conf.parameter!![0]
                         }
-                        else baseRun.setConfig(conf.syntax)
 
-                        isFound = true
+                        if (configParameterList == null)
+                            configParameterList = LinkedList()
+
+                        configParameterList.add(paramValue)
+
+                        configParamIdx++
+
+                        if (lastConfig.parameter!!.size <= configParamIdx) {
+                            //end
+                            baseRun.setConfig(lastConfig.syntax, *configParameterList.toArray())
+                            config = null
+                            configParameter = null
+                            configParameterList.clear()
+                            configParameterList = null
+
+                            if (baseRun.errorText != null)
+                                break
+                        } else configParameter = lastConfig.parameter!![configParamIdx]
+
+                        continue
+                    }
+                }
+
+                val configArr = semantic.configs
+                if (configArr != null) {
+                    var isFound = false
+                    for (conf in configArr) {
+                        if (conf.syntax == cmd) {
+                            if (conf.parameter != null && conf.parameter!!.isNotEmpty()) {
+                                config = conf
+                                configParamIdx = 0
+                                configParameter = conf.parameter!![0]
+                            } else baseRun.setConfig(conf.syntax)
+
+                            isFound = true
+                            break
+                        }
+                    }
+
+                    if (baseRun.errorText != null)
+                        break
+
+                    if (isFound)
+                        continue
+                }
+
+                val parameter = semantic.parameter
+                if (parameter != null) {
+                    val paramValue = parameter.checkType(cmd)
+                    if (paramValue == null) {
+                        baseRun.errorText = "执行参数类型不正确，错误参数：$cmd"
                         break
                     }
-                }
+                    baseRun.setParameter(paramValue)
+                } else baseRun.errorText = "${semantic.syntax}多余的参数 $cmd"
 
-                if(baseRun.errorText != null)
+                if (baseRun.errorText != null)
                     break
-
-                if(isFound)
-                    continue
             }
-
-            val parameter = semantic.parameter
-            if(parameter != null) {
-                val paramValue = parameter.checkType(cmd)
-                if(paramValue == null) {
-                    baseRun.errorText = "执行参数类型不正确，错误参数：$cmd"
-                    break
-                }
-                baseRun.setParameter(paramValue)
-            }
-            else baseRun.errorText = "${semantic.syntax}多余的参数 $cmd"
-
-            if(baseRun.errorText != null)
-                break
         }
 
         if(baseRun.errorText != null)
@@ -119,6 +118,55 @@ object CoreSemanticResolve {
             return ResolveResultBean(false, null, baseRun.errorText)
 
         return ResolveResultBean(true, result, null)
+    }
+
+    fun resolveExecStr(execStr: String): SemanticResolveBean? {
+        val currentExecStr = execStr.trim()
+        var namespace = ""
+        var syntax = ""
+        var params: Array<String>? = null
+
+        var isForNamespace = true
+        var idx = 0
+        val length = currentExecStr.length
+
+        loop@ while(idx < length) {
+            val char = currentExecStr[idx]
+            idx ++
+            when(char) {
+                '.' -> {
+                    if(idx == 1)
+                        return null
+                    isForNamespace = false
+                }
+                ' ' -> {
+                    break@loop
+                }
+                else -> {
+                    if(isForNamespace)
+                        namespace += char
+                    else syntax += char
+                }
+            }
+        }
+
+        if(syntax.isEmpty()) {
+            if(isForNamespace && namespace.isNotEmpty()) {
+                syntax = namespace
+                namespace = ""
+            }
+            else return null
+        }
+
+        val paramsStr = currentExecStr.substring(idx)
+        if(paramsStr.isNotEmpty())
+            params = paramsStr.split(' ').toTypedArray()
+
+        return SemanticResolveBean(
+            namespace = namespace,
+            syntax = syntax,
+            params = params
+        )
     }
 }
 

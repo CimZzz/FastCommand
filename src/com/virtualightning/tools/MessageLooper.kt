@@ -40,7 +40,7 @@ class MessageLooper<T> (
             }
 
             synchronized(locker) {
-                if(messageQueue.isEmpty()) {
+                if(state != LooperState.Destroy && messageQueue.isEmpty()) {
                     state = LooperState.Sleep
                     locker.wait()
                 }
