@@ -1,5 +1,6 @@
 package com.virtualightning.tools
 
+import com.virtualightning.core.CoreApp
 import java.util.concurrent.LinkedBlockingQueue
 
 typealias MessageHandler<T> = (T) -> Unit
@@ -18,9 +19,9 @@ class MessageLooper<T> (
                 return
             state = LooperState.StartAsync
 
-            Thread {
+            CoreApp.exec {
                 start()
-            }.start()
+            }
         }
     }
 

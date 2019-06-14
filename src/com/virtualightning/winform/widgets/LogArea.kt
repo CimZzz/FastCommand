@@ -10,6 +10,7 @@ class LogArea: JTextPane() {
     val redStyle : Style = addStyle("red",null)
     val greenStyle : Style = addStyle("green",null)
     val blackStyle : Style = addStyle("black",null)
+    val whiteStyle : Style = addStyle("black",null)
     val yellowStyle : Style = addStyle("yellow",null)
     val tempStyle : Style = addStyle("temp",null)
 
@@ -22,10 +23,12 @@ class LogArea: JTextPane() {
         StyleConstants.setForeground(greenStyle, Color.GREEN)
         StyleConstants.setForeground(yellowStyle, Color.YELLOW)
         StyleConstants.setForeground(blackStyle, Color.BLACK)
+        StyleConstants.setForeground(whiteStyle, Color.white)
     }
-    fun error(str : String) = document.insertString(document.length,str + "\n",redStyle)
+    fun message(str : String) = document.insertString(document.length,str + "\n",whiteStyle)
     fun warn(str : String) = document.insertString(document.length,str + "\n",yellowStyle)
-    fun message(str : String) = document.insertString(document.length,str + "\n",blackStyle)
+    fun success(str : String) = document.insertString(document.length,str + "\n", greenStyle)
+    fun error(str : String) = document.insertString(document.length,str + "\n",redStyle)
     fun temp(color: Color, str: String) {
         StyleConstants.setForeground(tempStyle, color)
         document.insertString(document.length,str + "\n", tempStyle)

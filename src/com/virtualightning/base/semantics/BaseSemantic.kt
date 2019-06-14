@@ -7,6 +7,11 @@ abstract class BaseSemantic {
     abstract val syntax: String
 
     /**
+     * 描述
+     */
+    abstract val intro: String
+
+    /**
      * 配置参数
      */
     open val configs: Array<BaseConfig>? = null
@@ -27,6 +32,8 @@ abstract class BaseSemantic {
             if(parameter != null)
                 appendln("接受的参数为: ${parameter!!.parameterIntro}")
 
+            appendln()
+            appendln(intro)
             appendln()
 
             val configArr = configs

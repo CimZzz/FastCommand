@@ -1,15 +1,17 @@
 package com.virtualightning.core
 
 import com.virtualightning.base.bundle.BaseResultBundle
+import com.virtualightning.base.generics.BaseAction
 import com.virtualightning.base.semantics.BaseBoundedConfig
 import com.virtualightning.base.semantics.BaseConfig
 import com.virtualightning.base.semantics.BaseParameter
 import com.virtualightning.base.semantics.BaseSemantic
 import com.virtualightning.been.SemanticResolveBean
+import com.virtualightning.tools.MessageLooper
 import java.util.*
 
 object CoreSemanticResolve {
-    fun resolve(semantic: BaseSemantic, args: Array<String>?): ResolveResultBean {
+    fun resolve(semantic: BaseSemantic, args: Array<String>?, messageLooper: MessageLooper<BaseAction>? = null): ResolveResultBean {
         val baseRun = semantic.generateRun()
 
         var config: BaseConfig? = null
@@ -113,7 +115,7 @@ object CoreSemanticResolve {
                 return ResolveResultBean(false, null, baseRun.errorText)
         }
 
-        val result = baseRun.run()
+        val result = baseRun.run(messageLooper)
         if(baseRun.errorText != null)
             return ResolveResultBean(false, null, baseRun.errorText)
 

@@ -1,5 +1,6 @@
 package com.virtualightning.semantics.semantics
 
+import com.virtualightning.base.generics.BaseAction
 import com.virtualightning.base.semantics.BaseConfig
 import com.virtualightning.base.semantics.BaseParameter
 import com.virtualightning.base.semantics.BaseSemantic
@@ -9,12 +10,16 @@ import com.virtualightning.core.CoreConstants
 import com.virtualightning.core.CoreMain
 import com.virtualightning.semantics.configs.HelpConfig
 import com.virtualightning.semantics.params.StringParams
+import com.virtualightning.tools.MessageLooper
 import java.io.File
 import java.io.FileOutputStream
 import java.io.PrintWriter
 
 class InitializationSemantic: BaseSemantic() {
     override val syntax: String = "初始化"
+
+    override val intro: String = "执行初始化逻辑"
+
     override val configs: Array<BaseConfig>? = arrayOf(
             HelpConfig,
             StartCommandConfig(),
@@ -117,7 +122,7 @@ class InitializationSemantic: BaseSemantic() {
             }
         }
 
-        override fun doRun(): Any? {
+        override fun doRun(messageLooper: MessageLooper<BaseAction>?): Any? {
             val configFile = this.configFile
             val initResult = if (configFile != null)
                 CoreConstants.initFromFile(configFile)

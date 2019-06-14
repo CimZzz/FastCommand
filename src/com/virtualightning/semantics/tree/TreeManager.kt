@@ -6,7 +6,6 @@ class TreeManager {
     private val semanticMap = HashMap<String, HashMap<String, BaseSemantic>>()
     private val rootTreeNode: TreeNode = TreeNode('0')
 
-
     fun addSemantic(namespace: String, semantic: BaseSemantic): Boolean {
         val subMap = semanticMap[namespace]?: {
             val map = HashMap<String, BaseSemantic>()
@@ -21,7 +20,6 @@ class TreeManager {
         subMap[semantic.syntax] = semantic
         return true
     }
-
 
     fun destroy() {
 
