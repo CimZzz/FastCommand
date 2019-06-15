@@ -6,103 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="68bd09ba-7563-41a2-aa39-733bc990c8bd" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/virtualightning/actions/ClearAction.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/virtualightning/actions/InitTreeAction.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/virtualightning/actions/InitTreeCompletedAction.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/virtualightning/actions/SemanticErrorAction.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/virtualightning/base/generics/BaseErrorAction.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/virtualightning/been/SemanticResolveBean.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/virtualightning/interfaces/NormalInterfaces.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/virtualightning/semantics/actions/InnerCloseCmdAction.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/virtualightning/semantics/actions/InnerCmdExecAction.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/virtualightning/semantics/actions/InnerDestroyTreeAction.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/virtualightning/semantics/actions/InnerInitTreeCompletedAction.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/virtualightning/semantics/actions/InnerSemanticExecAction.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/virtualightning/semantics/semantics/ClearSemantic.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/virtualightning/semantics/tasks/CmdTask.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/virtualightning/semantics/tasks/ExecSemanticTask.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/virtualightning/semantics/tasks/InitTreeTask.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/virtualightning/semantics/tree/TreeManager.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/META-INF/FastCommand.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/META-INF/FastCommand.kotlin_module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/bundle/BaseResultBundle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/bundle/BaseResultBundle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/generics/BaseAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/generics/BaseAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/generics/BaseTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/generics/BaseTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/generics/BaseTreeAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/generics/BaseTreeAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/semantics/BaseBoundedConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/semantics/BaseBoundedConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/semantics/BaseConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/semantics/BaseConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/semantics/BaseParameter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/semantics/BaseParameter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/semantics/BaseSemantic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/semantics/BaseSemantic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/semantics/BaseSemanticRun.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/semantics/BaseSemanticRun.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/ui/BaseWindow$doInit$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/ui/BaseWindow$doInit$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/ui/BaseWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/ui/BaseWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/ui/BaseWindowAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/ui/BaseWindowAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/ui/WindowState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/base/ui/WindowState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/been/InitializationSemantic$ConfigurationConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/been/InitializationSemantic$DefaultConfigurationConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/been/InitializationSemantic$InitializationSemanticRun$setConfig$1$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/been/InitializationSemantic$InitializationSemanticRun$setConfig$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/been/InitializationSemantic$InitializationSemanticRun$setConfig$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/been/InitializationSemantic$InitializationSemanticRun$setConfig$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/been/InitializationSemantic$InitializationSemanticRun$setConfig$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/been/InitializationSemantic$InitializationSemanticRun.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/been/InitializationSemantic$StartCommandConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/been/InitializationSemantic$StartFrameConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/been/InitializationSemantic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/core/CoreApp$messageLooper$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/core/CoreApp$messageLooper$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/core/CoreApp$sam$java_lang_Runnable$0.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/core/CoreApp$sam$java_lang_Runnable$0.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/core/CoreApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/core/CoreApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/core/CoreConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/core/CoreConstants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/core/CoreInitParams.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/core/CoreInitParams.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/core/CoreMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/core/CoreMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/core/CoreSemanticResolve.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/core/CoreSemanticResolve.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/core/ResolveResultBean.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/core/ResolveResultBean.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/defaults/DefaultReporter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/defaults/DefaultReporter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/interfaces/IGlobalMessageReceiver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/interfaces/IGlobalMessageReceiver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/interfaces/IReporter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/interfaces/IReporter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/semantics/HelpConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/semantics/StringParams.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/semantics/tree/SemanticTree$initTree$messageLooper$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/semantics/tree/SemanticTree$initTree$messageLooper$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/semantics/tree/SemanticTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/semantics/tree/SemanticTree.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/semantics/tree/TreeNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/semantics/tree/TreeNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/semantics/tree/TreeState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/semantics/tree/TreeState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/semantics/tree/actions/InitTreeAction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/tools/LooperState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/tools/LooperState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/tools/MessageLooper$startAsync$$inlined$synchronized$lambda$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/tools/MessageLooper$startAsync$$inlined$synchronized$lambda$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/tools/MessageLooper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/tools/MessageLooper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/tools/MessageLooperKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/tools/MessageLooperKt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/tools/RefHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/tools/RefHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/FrameBus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/FrameBus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/MainFrame$onInit$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/MainFrame$onInit$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/MainFrame$onInit$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/MainFrame$onInit$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/MainFrame$onInit$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/MainFrame$onInit$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/MainFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/WindowContext$screenHeight$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/WindowContext$screenHeight$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/WindowContext$screenWidth$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/WindowContext$screenWidth$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/WindowContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/WindowContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/actions/DownAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/actions/DownAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/actions/EnterAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/actions/EnterAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/actions/EscAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/actions/EscAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/actions/LogAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/actions/LogAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/actions/UpAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/actions/UpAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/widgets/LogArea.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FastCommand/com/virtualightning/winform/widgets/LogArea.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/virtualightning/base/generics/BaseTask.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/virtualightning/base/generics/BaseTask.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/virtualightning/base/generics/BaseTreeAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/virtualightning/base/generics/BaseTreeAction.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/virtualightning/been/InitializationSemantic.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/virtualightning/semantics/semantics/InitializationSemantic.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/virtualightning/core/CoreApp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/virtualightning/core/CoreApp.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/virtualightning/core/CoreMain.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/virtualightning/core/CoreMain.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/virtualightning/core/CoreSemanticResolve.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/virtualightning/core/CoreSemanticResolve.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/virtualightning/semantics/HelpConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/virtualightning/semantics/configs/HelpConfig.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/virtualightning/semantics/StringParams.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/virtualightning/semantics/params/StringParams.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/virtualightning/semantics/tree/SemanticTree.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/virtualightning/semantics/tree/SemanticTree.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/virtualightning/semantics/tree/TreeNode.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/virtualightning/semantics/tree/TreeNode.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/virtualightning/semantics/tree/actions/InitTreeAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/virtualightning/semantics/actions/InnerInitTreeAction.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/virtualightning/tasks/ScanTreeTask.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/virtualightning/tools/MessageLooper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/virtualightning/tools/MessageLooper.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/virtualightning/winform/MainFrame.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/virtualightning/winform/MainFrame.kt" afterDir="false" />
-    </list>
+    <list default="true" id="68bd09ba-7563-41a2-aa39-733bc990c8bd" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -416,7 +320,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560471202620" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560471962222" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -567,18 +471,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1560306991175</updated>
-      <workItem from="1560430248071" duration="9658000" />
+      <workItem from="1560430248071" duration="9704000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9658000" />
+    <option name="totallyTimeSpent" value="9704000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="953" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25457877" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25457877" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -590,12 +494,12 @@
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3292683" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32868758" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32868758" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39953542" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3292683" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32868758" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3292683" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32868758" />
