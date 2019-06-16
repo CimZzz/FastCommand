@@ -1,6 +1,9 @@
 package com.virtualightning.core
 
 import com.virtualightning.base.generics.BaseAction
+import com.virtualightning.base.semantics.BaseSemantic
+import com.virtualightning.base.semantics.BaseSemanticRun
+import com.virtualightning.been.SemanticResolveBean
 import com.virtualightning.defaults.DefaultReporter
 import com.virtualightning.interfaces.IGlobalMessageReceiver
 import com.virtualightning.interfaces.IReporter
@@ -19,8 +22,8 @@ object CoreApp {
      * 初始化环境
      */
     fun initEnvironment() {
-        messageLooper.startAsync()
         threadPool = Executors.newCachedThreadPool()
+        messageLooper.startAsync()
         semanticTree = SemanticTree()
         semanticTree?.initTree()
     }
@@ -90,5 +93,17 @@ object CoreApp {
 
     fun execSemantic(messageLooper: MessageLooper<BaseAction>, execStr: String) {
         semanticTree?.tryExecSemantic(messageLooper, execStr)
+    }
+
+    fun searchSemantic(messageLooper: MessageLooper<BaseAction>, syntaxStr: String) {
+        semanticTree?.trySearchSemantic(messageLooper, syntaxStr)
+    }
+
+    fun findSemanticBy(resolveBean: SemanticResolveBean): BaseSemantic? {
+        return semanticTree?.findSemanticBy(resolveBean)
+    }
+
+    fun findSemanticOnly(semanticName: String): BaseSemantic? {
+        return semanticTree?.findSemanticOnly(semanticName)
     }
 }

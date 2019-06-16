@@ -1,22 +1,20 @@
 package com.virtualightning.semantics.semantics
 
-import com.virtualightning.actions.ClearAction
+import com.virtualightning.actions.CmdCreateAction
 import com.virtualightning.base.generics.BaseAction
 import com.virtualightning.base.semantics.BaseSemantic
 import com.virtualightning.base.semantics.BaseSemanticRun
 import com.virtualightning.tools.MessageLooper
 
-class ClearSemantic: BaseSemantic() {
-    override val syntax: String = "clear"
+class CmdSemantic: BaseSemantic() {
+    override val syntax: String = "cmd"
 
-    override val intro: String = "清空当前控制台全部信息"
-
-
+    override val intro: String = "打开一个无 tty 的终端"
 
     override fun generateRun(): BaseSemanticRun =
-        object: BaseSemanticRun(this) {
+        object : BaseSemanticRun(this) {
             override fun doRun(messageLooper: MessageLooper<BaseAction>?): Any? {
-                messageLooper?.sendAction(ClearAction)
+                messageLooper?.sendAction(CmdCreateAction)
                 return super.doRun(messageLooper)
             }
         }

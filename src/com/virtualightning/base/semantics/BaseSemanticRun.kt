@@ -1,20 +1,23 @@
 package com.virtualightning.base.semantics
 
+import com.virtualightning.base.generics.BaseAction
+import com.virtualightning.tools.MessageLooper
+
 abstract class BaseSemanticRun(
     val semantic: BaseSemantic
 ) {
     var errorText: String? = null
-    private var runnable: (() -> Any?)? = null
+    private var runnable: ((messageLooper: MessageLooper<BaseAction>?) -> Any?)? = null
     private var markEnd: Boolean = false
 
-    fun run(): Any? {
+    fun run(messageLooper: MessageLooper<BaseAction>?): Any? {
         val runnable = this.runnable
         if(runnable != null)
-            return runnable()
-        return doRun()
+            return runnable(messageLooper)
+        return doRun(messageLooper)
     }
 
-    fun markEnd(runnable: (() -> Any?)? = null) {
+    fun markEnd(runnable: ((messageLooper: MessageLooper<BaseAction>?) -> Any?)? = null) {
         this.runnable = runnable
         markEnd = true
     }
@@ -38,7 +41,7 @@ abstract class BaseSemanticRun(
         }
     }
 
-    open fun doRun(): Any? = null
+    open fun doRun(messageLooper: MessageLooper<BaseAction>?): Any? = null
     open fun setConfig(configSyntax: String, vararg params: Any?) {
         errorText = "错误的配置 $configSyntax"
     }
